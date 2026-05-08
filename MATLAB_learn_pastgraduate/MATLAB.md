@@ -111,7 +111,7 @@ c = [a; b]	% 按列拼接矩阵
 
 ```matlab
 % 第一节作业准备工作
-clear:clc;
+clear;clc;
 
 % 创建zuoye/ori（多层级目录）
 mkdir('zuoye\ori');  
@@ -186,13 +186,98 @@ rmdir("zuoye", 's');
 |     `.*`      | 两个矩阵对应位置的元素相乘。                             |
 |      `*`      | 矩阵乘法。                                               |
 
+### 作业
 
+> （本题要求使用交互式的选择路径）
+>
+> 1. 在ori同级文件夹内，建立pdf文件夹。
+> 2. 在pdf文件夹内，建立以pdf文件名命名的文件夹，并放置相应的pdf文件（重命名为report.pdf）
+> 3. 压缩pdf文件夹。
+> 4. 删除压缩后的文件。
 
+```matlab
+% 第二节作业准备工作
+clear;clc;
 
+% 创建zuoye/ori（多层级目录）
+mkdir('zuoye/ori');  
 
+% 创建所需的文件
+file_names = ["010001.docx", "010002.pdf", "010003.xlsx", "010007.pdf", "010008.pptx", "010010.pdf"];
 
+for i = file_names
+    f = fopen(fullfile("zuoye/ori/", i),"w");
+    fclose(f);
+end
+```
 
+```matlab
+clear;clc;
 
+% 获取 ori 文件夹路径
+% ori_path = "D:\matlab_learn\zuoye\ori";
+ori_path = uigetdir(".\", "请选择ori文件");
+pdf_path = fullfile(ori_path, "..\pdf");
+
+% 建立pdf文件夹
+mkdir(pdf_path);
+
+% 提取pdf文件名称
+pdf_info = dir(fullfile(ori_path, "*.pdf"));
+
+for i = 1:length(pdf_info)
+    name = pdf_info(i).name;
+    goal_path = fullfile(pdf_path, name(1:end-4));
+    mkdir(goal_path)
+    copyfile(fullfile(ori_path, name), fullfile(goal_path, 'report.pdf'))
+end
+
+% 压缩pdf文件
+zip(pdf_path,pdf_path);
+```
+
+```matlab
+% 删除pdf.zip文件
+delete(fullfile(ori_path, "..\pdf.zip"));
+
+% 删除所有内容
+rmdir(fullfile(ori_path, "..\..\zuoye"), 's');
+```
+
+> 随机生成一个正态矩阵，矩阵维数为 $3\times5$ ；将所有正数所在的行和列输出出来。用编程语言自动求出矩阵里面元素总数目。
+
+```matlab
+clear;clc;
+
+A = randn(3, 5);
+[r, l] = find(A > 0);
+
+num = numel(A);
+```
+
+> 随机生成一个矩阵，要求数字都位于0-1之间，维数为 $8\times4$ ，求这个矩阵的行方差和列方差。并求矩阵所有元素整体的方差
+
+```matlab
+clear;clc;
+
+A = rand(8, 4);
+var_r = var(A, 0, 2);
+var_l = var(A, 0, 1);
+var_all = var(A, 0, 'all')
+```
+
+> 随机生成两个 $10\times1$ 的向量，做两个向量之间的双样本t检验，得到p值和t值。
+
+```mysql
+clear;clc;
+
+% 生成两个10x1的向量
+X = randn(10, 1);
+Y = randn(10, 1);
+[h, p, ci, stats] = ttest2(X, Y);
+```
+
+> 小明同学出生日期是1990年1月20日，请问到2019年12月13日为止，小明多少岁（尽可能精确，岁数可以有小数点）？
 
 
 
