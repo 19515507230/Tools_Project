@@ -79,6 +79,20 @@ git log [option]
 git reset --hard <commit_id>
 
 # 添加文件至忽略列表
+# .gitignore 的文件内容示例
+
+# no .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in the build/ directory
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf
 ```
 
 ### git commit 常用参数
@@ -105,7 +119,7 @@ git reset --hard <commit_id>
 | ---------------- | ------------------ | -------------- | -------------- | ---------------------- |
 | `--soft`         | 是                 | 否             | 否             | 高（保留所有改动）     |
 | `--mixed` (默认) | 是                 | 是             | 否             | 中（保留本地文件改动） |
-| `--hard`         | 塑造一致性         | 是             | 是             | 低（强制覆盖一切）     |
+| `--hard`         | 是                 | 是             | 是             | 低（强制覆盖一切）     |
 
 
 
@@ -133,6 +147,12 @@ git merge 分支名
 git branch -d 分支名  # 删除分支时，需要做各种检查
 git branch -D 分支名  # 不做任何检查，强制删除
 ```
+
+> 解决合并冲突
+>
+> 1. 处理文件中冲突的地方 
+> 2. 将解决完冲突的文件加入暂存区(add) 
+> 3. 提交到仓库(commit)
 
 
 
