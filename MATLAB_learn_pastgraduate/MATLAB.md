@@ -306,5 +306,63 @@ age = delta_year + years(t_1 - t_0 -years(delta_year));
 
 ### 作业
 
+> 随机生成10列数，每一列有20个值。将这个矩阵数值扩大100倍并取整。求所有列之间的并集。
+
+```matlab
+clear;clc;
+
+A = round(rand(20 ,10) * 100);
+
+for i = 1:size(A, 2)
+    if i == 1
+        union_A = A(:, i);
+        continue
+    end
+    union_A = union(union_A, A(:,i));
+end
+```
+
+> 生成一个10*180的随机矩阵，假设这个矩阵代表10个脑区，180个时间点。求两两脑区间的皮尔逊相关系数，得到相关系数矩阵，也需要知道相关系数是否显著。将自相关系数置为0，将显著性小于0.5的相关系数置为0（不能使用if语句）。
+
+```matlab
+clear;clc;
+
+regions = rand(10, 180);
+[corr_regions, p] = corr(regions', 'Type','Pearson');
+
+for i = 1:length(corr_regions)
+    corr_regions(i, i) = 0;
+end
+
+corr_regions(p<0.5)=0;
+
+```
+
+> 统计info.xlsx里score的缺失值的个数，计算有score的同学的平均分。计算男、女生分别的平均分，计算年龄大于40、小于40的同学的平均分，分别计算年龄大于40男生、女生；以及分别计算年龄小于40的男生、女生的平均分。（1为男，2为女）
+
+```matlab
+% 准备工作
+clear;clc;
+no = {'010001'; '010002'; '010003'; '010004'; '010005'; ...
+           '010006'; '010007'; '010008'; '010009'; '010010'};
+age = [23; 43; 43; 89; 32; 32; 12; 54; 21; 67];
+sex = [1; 2; 1; 1; 1; 2; 2; 2; 1; 2];
+score = [99; 88; 45; 87; NaN; 36; 77; 22; NaN; NaN];
+
+T = table(no, age, sex, score);
+writetable(T, 'info.xlsx');
+```
+
+```matlab
+```
+
+
+
+
+
+
+
+
+
 
 
