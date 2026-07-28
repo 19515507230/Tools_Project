@@ -20,7 +20,7 @@ py -<tags> -m pip list
 
 # 给指定版本安装库
 py -<tags> -m pip install 库名
-py -3.12 -m pip install scipy -i https://pypi.tuna.tsinghua.edu.cn/simple
+py -<tags> -m pip install 库名 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## Pycharm快捷键
