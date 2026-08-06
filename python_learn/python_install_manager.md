@@ -4,7 +4,7 @@
 
 ```bash
 # 查看已安装版本
-py --list
+py list
 
 # 查看已安装版本及安装路径
 py --list-paths
