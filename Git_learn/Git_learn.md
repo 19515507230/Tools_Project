@@ -219,7 +219,7 @@ git pull [远端名称] [分支名称]
 ```bash
 # 进入仓库目录
 cd /d/Graduate_Study
-# 备份远程仓库地址
+# 备份远程仓库地址:git@github.com:19515507230/Graduate_Study.git
 git remote -v
 # 删除.git
 rm -rf .git
