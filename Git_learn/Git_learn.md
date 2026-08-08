@@ -206,11 +206,34 @@ git pull [远端名称] [分支名称]
 # 不指定远端名称和分支名，则抓取所有分支名并更新当前分支
 ```
 
+## 重置仓库
 
+需求可以概括为：
 
+- ✅ 删除 **本地 Git 提交历史**
+- ✅ 删除 **远程仓库 Git 提交历史**
+- ✅ 保留当前代码文件
+- ✅ 保留本地仓库与远程仓库的绑定关系（即 `origin` 不变）
+- ✅ 重新建立一个全新的第一次提交
 
+```bash
+# 进入仓库目录
+cd /d/Graduate_Study
+# 备份远程仓库地址
+git remote -v
+# 删除.git
+rm -rf .git
 
-
+# 重新初始化仓库
+git init
+git status
+git add .
+git status
+git commit -m "Initial commit"
+git remote add origin 远程地址
+git branch -M main
+git push -f origin main  # 强制覆盖远程历史
+```
 
 
 
