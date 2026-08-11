@@ -237,6 +237,14 @@ git push -f origin main  # 强制覆盖远程历史
 
 
 
+## 远程操作改名
+
+```bash
+# 更改远程仓库的名称后，本地Git仓库保存的远程仓库地址（remote URL），它不会因为GitHub网页端修改仓库名称而自动更新。
+# 更改本地URL（不执行也可以push）
+git remote set-url github git@github.com:19515507230/新仓库名.git
+```
+
 
 
 
