@@ -21,6 +21,9 @@ py -<tags> -m pip list
 # 给指定版本安装库
 py -<tags> -m pip install 库名
 py -<tags> -m pip install 库名 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 给指定版本卸载库
+py -<tags> -m pip uninstall 库名
 ```
 
 ### 虚拟环境
