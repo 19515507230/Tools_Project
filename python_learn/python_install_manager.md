@@ -12,6 +12,9 @@ py --list-paths
 # 安装指定版本
 py install <tags>
 
+# 卸载指定版本
+py uninstall [-y|--yes] <TAG>
+
 # 查看默认运行版本
 py --version
 
@@ -24,6 +27,11 @@ py -<tags> -m pip install 库名 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 给指定版本卸载库
 py -<tags> -m pip uninstall 库名
+
+# 传输第三方库
+py -<TAG> -m pip freeze > requirements.txt  # 导出备份
+py -<TAG> -m pip install -r requirements.txt  # 批量安装
+py -<TAG> -m pip uninstall -r requirements.txt -y  # 批量卸载
 ```
 
 ### 虚拟环境
